@@ -1,21 +1,19 @@
-import Character from '../app';
+import Character from '../class/Character'
 
-// Создание персонажа с корректными данными
+// Создание персонажа
 test.each([
-  [1, "Bowman", 25, 25],
-  [2, "Swordsman", 40, 10],
-  [3, "Magician", 10, 40],
-  [4,"Undead", 25, 25],
-  [5, "Zombie", 40, 10],
-  [6, "Daemon", 10, 40],
-])("Тест№%i: Тип %s attack: %i, defence: %i",
-(numver, type, attack, defence) => {
+  [1, "Bowman"],
+  [2, "Swordsman"],
+  [3, "Magician"],
+  [4,"Undead"],
+  [5, "Zombie"],
+  [6, "Daemon"],
+])("Тест№%i: Тип %s",
+(number, type) => {
   let input = ["ivan", type];
   let pers = new Character(...input);
   expect(pers.name).toBe("ivan");
   expect(pers.type).toBe(type);
-  expect(pers.attack).toBe(attack);
-  expect(pers.defence).toBe(defence);
 })
 
 test("Тест№7: Некорректное имя персонажа (менее 2 символов)", () =>{
@@ -29,4 +27,3 @@ test("Тест№8: Некорректное имя персонажа (боле
 test("Тест№9: Некорректный тир персонажа", () =>{
   expect(() => new Character("Bro", "Child")).toThrow()
 })
-
